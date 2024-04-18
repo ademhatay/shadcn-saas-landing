@@ -143,9 +143,7 @@
     display: inline-block;
     padding: 10px 20px;
     text-transform: uppercase;
-    letter-spacing: 4px;
     text-decoration: none;
-    font-size: 17px;
     font-weight: 500;
     overflow: hidden;
     cursor: pointer;
@@ -154,7 +152,6 @@
   
   .btn-card:hover {
     color: #255784;
-    background: #348AC7;
     box-shadow: 0 0 10px #348AC7, 0 0 40px #348AC7, 0 0 80px #348AC7;
     transition-delay: 1s;
   }

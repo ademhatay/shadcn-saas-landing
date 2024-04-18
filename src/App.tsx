@@ -6,15 +6,11 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel"
-import { useMediaQuery } from "./hooks/useMediaQuery";
 import Autoplay from "embla-carousel-autoplay"
 
 const App = () => {
   const theme = useTheme();
-  const isDesktop = useMediaQuery("(min-width: 768px)");
   const [starColor, setStarColor] = useState(theme.theme === "dark" ? "#fff" : "#348AC7");
 
   useEffect(() => {
@@ -34,9 +30,9 @@ const App = () => {
       }}
     ></div>
     <Header />
-    <div className="pt-32 min-h-screen w-screen container px-0">
+    <div className="pt-32  w-screen container px-1 md:px-4">
       <div className="flex flex-col w-full justify-center items-center">
-        <div className="btn-card text-center">
+        <div className="btn-card text-center text-base">
           <span></span>
           <span></span>
           <span></span>
@@ -45,7 +41,7 @@ const App = () => {
         </div>
 
 
-        <h1 className="sm:text-5xl md:text-6xl lg:text-7xl text-4xl text-center font-medium bg-clip-text text-transparent  bg-gradient-to-r from-[#7474BF] to-[#348AC7] pb-6">
+        <h1 className="sm:text-5xl md:text-5xl lg:text-6xl text-3xl text-center font-medium bg-clip-text text-transparent  bg-gradient-to-r from-[#7474BF] to-[#348AC7] pb-6 w-full">
           The best way to manage <br />  your Personal Tasks
         </h1>
         <p className="text-base text-center md:text-lg lg:text-xl xl:text-2xl">
@@ -69,7 +65,7 @@ const App = () => {
         opts={{
           loop: true,
           align: "center"
-        }} className="mb-10 mt-5 px-8">
+        }} className="mb-10 mt-5 max-w-[1074px]">
           <CarouselContent className="m-0">
             <CarouselItem className="p-0 flex justify-center">
               {/* <img src="https://via.placeholder.com/1074x608" alt="" /> */}
@@ -82,12 +78,6 @@ const App = () => {
               <img className="rounded-md" src="https://via.placeholder.com/1074x608" alt="" />
             </CarouselItem>
           </CarouselContent>
-          {
-            isDesktop && <>
-              <CarouselPrevious />
-              <CarouselNext />
-            </>
-          }
         </Carousel>
       </div>
     </div>
