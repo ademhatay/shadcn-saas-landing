@@ -35,7 +35,7 @@ const App = () => {
     ></div>
     <Header />
     <div className="pt-32 min-h-screen w-screen container px-0">
-      <div className="flex flex-col gap-y-7 w-full justify-center items-center">
+      <div className="flex flex-col w-full justify-center items-center">
         <div className="btn-card text-center">
           <span></span>
           <span></span>
@@ -45,7 +45,7 @@ const App = () => {
         </div>
 
 
-        <h1 className="sm:text-5xl md:text-6xl lg:text-7xl text-4xl text-center font-medium bg-clip-text text-transparent  bg-gradient-to-r from-[#7474BF] to-[#348AC7] py-6">
+        <h1 className="sm:text-5xl md:text-6xl lg:text-7xl text-4xl text-center font-medium bg-clip-text text-transparent  bg-gradient-to-r from-[#7474BF] to-[#348AC7] pb-6">
           The best way to manage <br />  your Personal Tasks
         </h1>
         <p className="text-base text-center md:text-lg lg:text-xl xl:text-2xl">
