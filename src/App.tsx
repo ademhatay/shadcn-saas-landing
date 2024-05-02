@@ -4,6 +4,7 @@ import { useTheme } from "./context/themeContext"
 import Hero from "./components/base/Hero";
 import Brands from "./components/base/Brands";
 import Features from "./components/base/Features";
+import Pricing from "./components/base/Pricing";
 
 
 const App = () => {
@@ -30,7 +31,7 @@ const App = () => {
     <Hero />
     <Brands />
     <Features />
-   
+    <Pricing />
   </>
 }
 
