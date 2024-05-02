@@ -5,6 +5,7 @@ import Hero from "./components/base/Hero";
 import Brands from "./components/base/Brands";
 import Features from "./components/base/Features";
 import Pricing from "./components/base/Pricing";
+import Newsletter from "./components/base/Newsletter";
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
     <Brands />
     <Features />
     <Pricing />
+    <Newsletter />
   </>
 }
 
