@@ -6,6 +6,7 @@ import Brands from "./components/base/Brands";
 import Features from "./components/base/Features";
 import Pricing from "./components/base/Pricing";
 import Newsletter from "./components/base/Newsletter";
+import Footer from "./components/base/Footer";
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
     <Features />
     <Pricing />
     <Newsletter />
+    <Footer />
   </>
 }
 
