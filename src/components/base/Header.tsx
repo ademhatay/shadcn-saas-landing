@@ -23,8 +23,12 @@ const Header = () => {
                     <Button className='dark:text-white text-2xl font-bold p-0' variant="link">Logo</Button>
                 </div>
                 <div className='flex space-x-4'>
-                    <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">Features</Button>
-                    <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">Pricing</Button>
+                    <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">
+                        <a href="#features">Features</a>
+                    </Button>
+                    <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">
+                        <a href="#pricing">Pricing</a>
+                    </Button>
                     <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">
                         Contact
                     </Button>

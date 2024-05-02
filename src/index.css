@@ -75,6 +75,7 @@
   body {
     @apply bg-white dark:bg-header text-foreground;
     font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
   }
 
   .hero {

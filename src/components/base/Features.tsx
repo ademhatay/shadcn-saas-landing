@@ -9,7 +9,7 @@ import {
 
 const Features = () => {
     return <>
-        <div className="container py-10 text-center">
+        <div className="container py-10 text-center" id="features">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium">
                 Easy to Use, Superior Performance
             </h2>
