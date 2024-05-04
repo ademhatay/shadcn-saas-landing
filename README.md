@@ -29,7 +29,7 @@ bun install
 ```
 4. Start the development server
 ```bash
-bun start
+bun dev
 ```
 5. Open http://localhost:5173 in your browser
 
