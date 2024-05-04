@@ -35,3 +35,20 @@ bun start
 
 ## License
 This project is open-source and available under the [MIT License](LICENSE).
+
+## Contributing
+Contributions are welcome! If you find any bugs or want to improve the project, feel free to open an issue or a pull request.
+
+## Contributing Guidelines
+- Fork the repository
+- Clone the forked repository
+- Create a new branch
+- Make your changes
+- Commit your changes
+- Push to the new branch
+- Open a pull request
+- Wait for the pull request to be reviewed
+( If you contact me before starting to work, it will be better for conflict-free work. )
+
+## Contributors
+- [Adem  Hatay](https://github.com/ademhatay)
