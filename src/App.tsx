@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import Header from "./components/base/Header"
 import { useTheme } from "./context/themeContext"
 import Hero from "./components/base/Hero";
 import Brands from "./components/base/Brands";
 import Features from "./components/base/Features";
 import Pricing from "./components/base/Pricing";
 import Newsletter from "./components/base/Newsletter";
-import Footer from "./components/base/Footer";
 
 
 const App = () => {
@@ -29,13 +27,11 @@ const App = () => {
         boxShadow: stars,
       }}
     ></div>
-    <Header />
     <Hero />
     <Brands />
     <Features />
     <Pricing />
     <Newsletter />
-    <Footer />
   </>
 }
 
