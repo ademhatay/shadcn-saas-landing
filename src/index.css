@@ -84,26 +84,6 @@
     overflow: hidden;
   }
 
-  .stars {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 1px;
-    width: 1px;
-    background-color: #fff;
-    border-radius: 50%;
-  }
-
-  .stars.star1 {
-    top: 20%;
-    left: 30%;
-  }
-
-  .stars.star2 {
-    top: 50%;
-    left: 70%;
-  }
-
   @keyframes flicker {
     0% {
       opacity: 1;
@@ -118,16 +98,6 @@
     }
   }
 
-  .stars.star1 {
-    animation: flicker 1.5s infinite alternate, zoom 16s infinite alternate;
-    animation-delay: 0.5s;
-  }
-
-  .stars.star2 {
-    animation: flicker 2s infinite alternate, zoom 20s infinite alternate;
-    animation-delay: 1s;
-  }
-
   @keyframes zoom {
     0% {
       transform: scale(1);
@@ -135,6 +105,20 @@
 
     100% {
       transform: scale(1.5);
+    }
+  }
+
+  @keyframes move {
+    0% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(5px, 5px);
+    }
+
+    100% {
+      transform: translate(0, 0);
     }
   }
 
@@ -150,7 +134,7 @@
     cursor: pointer;
     border-radius: 4px;
   }
-  
+
   .btn-card:hover {
     color: #255784;
     box-shadow: 0 0 10px #348AC7, 0 0 40px #348AC7, 0 0 80px #348AC7;
@@ -161,7 +145,7 @@
     position: absolute;
     display: block;
   }
-  
+
   .btn-card span:nth-child(1) {
     top: 0;
     left: -100%;
@@ -169,12 +153,12 @@
     height: 2px;
     background: linear-gradient(90deg, transparent, #348AC7);
   }
-  
+
   .btn-card:hover span:nth-child(1) {
     left: 100%;
     transition: 1s;
   }
-  
+
   .btn-card span:nth-child(3) {
     bottom: 0;
     right: -100%;
@@ -182,13 +166,13 @@
     height: 2px;
     background: linear-gradient(270deg, transparent, #348AC7);
   }
-  
+
   .btn-card:hover span:nth-child(3) {
     right: 100%;
     transition: 1s;
     transition-delay: 0.5s;
   }
-  
+
   .btn-card span:nth-child(2) {
     top: -100%;
     right: 0;
@@ -196,13 +180,13 @@
     height: 100%;
     background: linear-gradient(180deg, transparent, #348AC7);
   }
-  
+
   .btn-card:hover span:nth-child(2) {
     top: 100%;
     transition: 1s;
     transition-delay: 0.25s;
   }
-  
+
   .btn-card span:nth-child(4) {
     bottom: -100%;
     left: 0;
@@ -210,7 +194,7 @@
     height: 100%;
     background: linear-gradient(360deg, transparent, #348AC7);
   }
-  
+
   .btn-card:hover span:nth-child(4) {
     bottom: 100%;
     transition: 1s;
