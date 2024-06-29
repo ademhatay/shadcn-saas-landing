@@ -10,12 +10,13 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import { ModeToggle } from "./ThemeToggle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useSmoothScroll from "@/hooks/useSmoothScroll";
 
 const Header = () => {
     const isDesktop = useMediaQuery("(min-width: 768px)");
     const scrollToId = useSmoothScroll();
+    const navigate = useNavigate();
 
     const handleScroll = (id: string, offset: number) => (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault();
@@ -75,7 +76,7 @@ const Header = () => {
                     <div className="flex space-x-4">{renderLinks()}</div>
                     <div className="flex space-x-4">
                         <Button variant="outline">Download the app</Button>
-                        <Button variant="default">Sign Up</Button>
+                        <Button onClick={() => navigate('/login')} variant="default">Sign Up</Button>
                         <ModeToggle />
                     </div>
                 </div>

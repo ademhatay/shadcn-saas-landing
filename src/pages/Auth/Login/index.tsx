@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     return (
@@ -29,12 +30,12 @@ const Login = () => {
                     </Button>
                 </form>
                 <div className="mt-6 flex items-center justify-between">
-                    <a href="/forgot-password" className="text-blue-600 dark:text-blue-400 hover:underline">
+                    <Link to="/forgot-password" className="text-blue-600 dark:text-blue-400 hover:underline">
                         Forgot Password?
-                    </a>
-                    <a href="/two-factor-auth" className="text-blue-600 dark:text-blue-400 hover:underline">
+                    </Link>
+                    <Link to="/two-factor-auth" className="text-blue-600 dark:text-blue-400 hover:underline">
                         Two-Factor Authentication
-                    </a>
+                    </Link>
                 </div>
                 <div className="mt-6 flex flex-col space-y-4">
                     <Button className="w-full flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white">
