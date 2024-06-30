@@ -86,7 +86,7 @@ const Header = () => {
 
     return (
         <Sheet>
-            <div className="flex container py-3 gap-x-3 justify-between items-center fixed top-0 bg-transparent backdrop-blur-lg z-[999]">
+            <div className="flex container py-3 gap-x-3 justify-between items-center fixed top-0 bg-transparent backdrop-blur-lg z-[998]">
                 <div className="flex gap-x-3 justify-center items-center">
                     <svg
                         className="w-6 h-6 dark:text-white"
@@ -126,7 +126,7 @@ const Header = () => {
                     </SheetTrigger>
                 </div>
             </div>
-            <SheetContent side="top" className="dark:bg-header border-b-0">
+            <SheetContent side="top" className="dark:bg-header border-b-0 z-[998]">
                 <SheetHeader className="flex justify-center items-center">
                     <Button className="dark:text-white text-2xl font-bold" variant="link">
                         <Link to="/">Logo</Link>
