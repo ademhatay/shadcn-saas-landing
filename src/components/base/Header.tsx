@@ -10,51 +10,63 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import { ModeToggle } from "./ThemeToggle";
-import { Link, useNavigate } from "react-router-dom";
-import useSmoothScroll from "@/hooks/useSmoothScroll";
+import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 
 const Header = () => {
     const isDesktop = useMediaQuery("(min-width: 768px)");
-    const scrollToId = useSmoothScroll();
-    const navigate = useNavigate();
+    const [scrolled, setScrolled] = useState(false);
 
-    const handleScroll = (id: string, offset: number) => (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        e.preventDefault();
-        scrollToId(id, offset);
-    };
+    useEffect(() => {
+        const handleScroll = () => {
+            const offset = window.scrollY;
+            if (offset > 50) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const renderLinks = () => (
         <>
             <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
-                <div onClick={handleScroll('home', 100)}>Home</div>
+                <div>Home</div>
             </Button>
             <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
-                <div onClick={handleScroll('features', 100)}>Features</div>
+                <div>Features</div>
             </Button>
             <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
-                <div onClick={handleScroll('pricing', 100)}>Pricing</div>
+                <div>Pricing</div>
             </Button>
             <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
                 <Link to="/contact">Contact</Link>
             </Button>
             <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
-                <div onClick={handleScroll('faq', 100)}>FAQ</div>
+                <div>FAQ</div>
             </Button>
             <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
-                <div onClick={handleScroll('team', 100)}>Team</div>
+                <div>Team</div>
             </Button>
         </>
     );
 
     if (isDesktop) {
         return (
-            <div className="w-full h-20 bg-white/20 dark:bg-header/30 backdrop-blur-lg top-6 fixed border-b border-gray-200/30 dark:border-gray-800/30 shadow-sm z-[999] transition-all duration-300" 
-                 style={{ 
-                    width: 'calc(100% - 48px)', 
-                    borderRadius: '16px',
-                    margin: '0 24px',
-                    transform: 'translateY(0)',
-                 }}
+            <div 
+                className={`w-full h-20 fixed z-[999] transition-all duration-300 ${
+                    scrolled 
+                        ? "bg-white/80 dark:bg-header/80 backdrop-blur-lg shadow-md top-0 border-b border-gray-200/30 dark:border-gray-800/30" 
+                        : "bg-transparent top-6"
+                }`}
+                style={{
+                    width: scrolled ? '100%' : 'calc(100% - 48px)',
+                    borderRadius: scrolled ? '0' : '16px',
+                    margin: scrolled ? '0' : '0 24px',
+                }}
             >
                 <div className="container mx-auto flex justify-between items-center h-full">
                     <div className="flex gap-x-3 justify-center items-center">
@@ -80,15 +92,14 @@ const Header = () => {
                     </div>
                     <div className="flex space-x-7">{renderLinks()}</div>
                     <div className="flex items-center space-x-4">
-                        <Button 
-                            variant="outline" 
+                        <Button
+                            variant="outline"
                             className="rounded-full px-6 py-2 border-gray-300 hover:border-primary hover:bg-primary/10 dark:border-gray-700 dark:hover:border-primary"
                         >
                             Download
                         </Button>
-                        <Button 
-                            onClick={() => navigate('/login')} 
-                            variant="default" 
+                        <Button
+                            variant="default"
                             className="rounded-full px-8 py-2 bg-[#5B72B9] text-white hover:bg-[#4A60A8] transition-colors"
                         >
                             Sign Up
@@ -102,13 +113,17 @@ const Header = () => {
 
     return (
         <Sheet>
-            <div className="flex container py-4 gap-x-3 justify-between items-center fixed top-4 bg-white/20 dark:bg-header/30 backdrop-blur-lg border-b border-gray-200/30 dark:border-gray-800/30 shadow-sm z-[998] transition-all duration-300"
-                 style={{ 
-                    width: 'calc(100% - 32px)', 
-                    borderRadius: '12px',
-                    margin: '0 16px',
-                    transform: 'translateY(0)',
-                 }}
+            <div 
+                className={`flex container py-4 gap-x-3 justify-between items-center fixed z-[998] transition-all duration-300 ${
+                    scrolled 
+                        ? "bg-white/80 dark:bg-header/80 backdrop-blur-lg shadow-md top-0 border-b border-gray-200/30 dark:border-gray-800/30" 
+                        : "bg-transparent top-4"
+                }`}
+                style={{
+                    width: scrolled ? '100%' : 'calc(100% - 32px)',
+                    borderRadius: scrolled ? '0' : '12px',
+                    margin: scrolled ? '0' : '0 16px',
+                }}
             >
                 <div className="flex gap-x-3 justify-center items-center">
                     <svg
@@ -160,14 +175,14 @@ const Header = () => {
                     {renderLinks()}
                 </SheetDescription>
                 <SheetFooter className="gap-y-3 mt-6">
-                    <Button 
-                        variant="outline" 
+                    <Button
+                        variant="outline"
                         className="rounded-full w-full border-gray-300 hover:border-primary hover:bg-primary/10 dark:border-gray-700 dark:hover:border-primary"
                     >
                         Download the app
                     </Button>
-                    <Button 
-                        variant="default" 
+                    <Button
+                        variant="default"
                         className="rounded-full w-full bg-[#5B72B9] text-white hover:bg-[#4A60A8] transition-colors"
                     >
                         Sign Up

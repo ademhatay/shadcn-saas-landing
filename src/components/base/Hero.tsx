@@ -5,13 +5,11 @@ import {
     CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
-    const navigate = useNavigate();
     return (
         <>
-            <div className="pt-32 container px-5 md:px-7" id="home">
+            <div className="pt-40 md:pt-48 container px-5 md:px-7" id="home">
                 <div className="flex flex-col w-full justify-center items-center">
                     <div className="mb-4 text-center text-base bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-md shadow-md">
                         We just raised $20M in Series B.
@@ -29,7 +27,7 @@ const Hero = () => {
                         <Button variant="default" className="w-full md:w-auto md:mr-4 px-6 py-3 text-lg">
                             Download the app
                         </Button>
-                        <Button onClick={() => navigate('/login')} variant="outline" className="w-full md:w-auto md:mr-4 px-6 py-3 text-lg">
+                        <Button variant="outline" className="w-full md:w-auto md:mr-4 px-6 py-3 text-lg">
                             Sign Up
                         </Button>
                     </div>
