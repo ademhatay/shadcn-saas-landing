@@ -23,26 +23,24 @@ const Header = () => {
         scrollToId(id, offset);
     };
 
-
-
     const renderLinks = () => (
         <>
-            <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">
+            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
                 <div onClick={handleScroll('home', 100)}>Home</div>
             </Button>
-            <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">
+            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
                 <div onClick={handleScroll('features', 100)}>Features</div>
             </Button>
-            <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">
+            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
                 <div onClick={handleScroll('pricing', 100)}>Pricing</div>
             </Button>
-            <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">
+            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
                 <Link to="/contact">Contact</Link>
             </Button>
-            <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">
+            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
                 <div onClick={handleScroll('faq', 100)}>FAQ</div>
             </Button>
-            <Button className="text-base dark:text-[#ECECEC] p-0" variant="link">
+            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
                 <div onClick={handleScroll('team', 100)}>Team</div>
             </Button>
         </>
@@ -50,11 +48,18 @@ const Header = () => {
 
     if (isDesktop) {
         return (
-            <div className="w-full h-16 bg-white/20 dark:bg-header/20 backdrop-blur-lg top-0 fixed border-b-[1px] z-[999]">
+            <div className="w-full h-20 bg-white/20 dark:bg-header/30 backdrop-blur-lg top-6 fixed border-b border-gray-200/30 dark:border-gray-800/30 shadow-sm z-[999] transition-all duration-300" 
+                 style={{ 
+                    width: 'calc(100% - 48px)', 
+                    borderRadius: '16px',
+                    margin: '0 24px',
+                    transform: 'translateY(0)',
+                 }}
+            >
                 <div className="container mx-auto flex justify-between items-center h-full">
                     <div className="flex gap-x-3 justify-center items-center">
                         <svg
-                            className="w-6 h-6 dark:text-white"
+                            className="w-7 h-7 text-primary dark:text-white"
                             viewBox="0 0 15 15"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -70,13 +75,24 @@ const Header = () => {
                             className="dark:text-white text-2xl font-bold p-0"
                             variant="link"
                         >
-                            <Link to="/">Logo</Link>
+                            <Link to="/" className="inline-flex items-center transition-colors hover:text-primary dark:hover:text-primary">Company</Link>
                         </Button>
                     </div>
-                    <div className="flex space-x-4">{renderLinks()}</div>
-                    <div className="flex space-x-4">
-                        <Button variant="outline">Download the app</Button>
-                        <Button onClick={() => navigate('/login')} variant="default">Sign Up</Button>
+                    <div className="flex space-x-7">{renderLinks()}</div>
+                    <div className="flex items-center space-x-4">
+                        <Button 
+                            variant="outline" 
+                            className="rounded-full px-6 py-2 border-gray-300 hover:border-primary hover:bg-primary/10 dark:border-gray-700 dark:hover:border-primary"
+                        >
+                            Download
+                        </Button>
+                        <Button 
+                            onClick={() => navigate('/login')} 
+                            variant="default" 
+                            className="rounded-full px-8 py-2 bg-[#5B72B9] text-white hover:bg-[#4A60A8] transition-colors"
+                        >
+                            Sign Up
+                        </Button>
                         <ModeToggle />
                     </div>
                 </div>
@@ -86,10 +102,17 @@ const Header = () => {
 
     return (
         <Sheet>
-            <div className="flex container py-3 gap-x-3 justify-between items-center fixed top-0 bg-transparent backdrop-blur-lg z-[998]">
+            <div className="flex container py-4 gap-x-3 justify-between items-center fixed top-4 bg-white/20 dark:bg-header/30 backdrop-blur-lg border-b border-gray-200/30 dark:border-gray-800/30 shadow-sm z-[998] transition-all duration-300"
+                 style={{ 
+                    width: 'calc(100% - 32px)', 
+                    borderRadius: '12px',
+                    margin: '0 16px',
+                    transform: 'translateY(0)',
+                 }}
+            >
                 <div className="flex gap-x-3 justify-center items-center">
                     <svg
-                        className="w-6 h-6 dark:text-white"
+                        className="w-7 h-7 text-primary dark:text-white"
                         viewBox="0 0 15 15"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -102,15 +125,15 @@ const Header = () => {
                         ></path>
                     </svg>
                     <div className="dark:text-white text-2xl font-bold">
-                        <Link to="/">Logo</Link>
+                        <Link to="/" className="hover:text-primary transition-colors">Company</Link>
                     </div>
                 </div>
                 <div className="flex justify-center items-center gap-x-4">
                     <ModeToggle />
                     <SheetTrigger>
-                        <div>
+                        <div className="p-1 rounded-md hover:bg-gray-200/50 dark:hover:bg-gray-800/50 transition-colors">
                             <svg
-                                className="w-8 h-8 dark:text-white"
+                                className="w-7 h-7 dark:text-white"
                                 viewBox="0 0 15 15"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -126,19 +149,29 @@ const Header = () => {
                     </SheetTrigger>
                 </div>
             </div>
-            <SheetContent side="top" className="dark:bg-header border-b-0 z-[998]">
+            <SheetContent side="top" className="dark:bg-header/95 bg-white/95 border-b-0 z-[998]">
                 <SheetHeader className="flex justify-center items-center">
                     <Button className="dark:text-white text-2xl font-bold" variant="link">
-                        <Link to="/">Logo</Link>
+                        <Link to="/" className="hover:text-primary transition-colors">Company</Link>
                     </Button>
                     <SheetClose />
                 </SheetHeader>
-                <SheetDescription className="flex flex-col justify-center items-center mx-auto">
+                <SheetDescription className="flex flex-col justify-center items-center mx-auto space-y-4 mt-4">
                     {renderLinks()}
                 </SheetDescription>
-                <SheetFooter className="gap-y-2 mt-3">
-                    <Button variant="outline">Download the app</Button>
-                    <Button variant="default">Sign Up</Button>
+                <SheetFooter className="gap-y-3 mt-6">
+                    <Button 
+                        variant="outline" 
+                        className="rounded-full w-full border-gray-300 hover:border-primary hover:bg-primary/10 dark:border-gray-700 dark:hover:border-primary"
+                    >
+                        Download the app
+                    </Button>
+                    <Button 
+                        variant="default" 
+                        className="rounded-full w-full bg-[#5B72B9] text-white hover:bg-[#4A60A8] transition-colors"
+                    >
+                        Sign Up
+                    </Button>
                 </SheetFooter>
             </SheetContent>
         </Sheet>
