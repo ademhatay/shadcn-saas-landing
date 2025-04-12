@@ -48,11 +48,13 @@ const Stars: React.FC<StarsProps> = ({ color }) => {
         let lastTime = 0;
         let mouseMoveX = 0;
         let mouseMoveY = 0;
+        let targetMouseX = 0;
+        let targetMouseY = 0;
 
 
         const handleMouseMove = (e: MouseEvent) => {
-            mouseMoveX = (e.clientX - window.innerWidth / 2) * 0.001;
-            mouseMoveY = (e.clientY - window.innerHeight / 2) * 0.001;
+            targetMouseX = (e.clientX - window.innerWidth / 2) * 0.0005;
+            targetMouseY = (e.clientY - window.innerHeight / 2) * 0.0005;
         };
 
         window.addEventListener('mousemove', handleMouseMove);
@@ -61,6 +63,10 @@ const Stars: React.FC<StarsProps> = ({ color }) => {
         const render = (time: number) => {
             const deltaTime = time - lastTime;
             lastTime = time;
+
+            // Yumuşak mouse hareketi
+            mouseMoveX += (targetMouseX - mouseMoveX) * 0.05;
+            mouseMoveY += (targetMouseY - mouseMoveY) * 0.05;
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -74,8 +80,10 @@ const Stars: React.FC<StarsProps> = ({ color }) => {
                 star.z -= deltaTime * 0.05;
 
 
-                star.x += mouseMoveX * (1000 - star.z) * 0.015;
-                star.y += mouseMoveY * (1000 - star.z) * 0.015;
+                // Derinliğe göre hareket hızını ayarla
+                const depth = (1000 - star.z) / 1000;
+                star.x += mouseMoveX * depth * 15;
+                star.y += mouseMoveY * depth * 15;
 
 
                 if (star.z <= 0) {
@@ -101,17 +109,19 @@ const Stars: React.FC<StarsProps> = ({ color }) => {
 
                 let starColor;
                 if (color === '#fff' || color === 'white') {
-
                     const colorType = Math.floor(Math.random() * 10);
                     if (colorType < 6) {
-                        starColor = `hsl(220, ${10 + Math.random() * 20}%, ${95 + star.hue / 4}%)`;
+                        starColor = `hsl(220, ${10 + Math.random() * 20}%, ${85 + star.hue / 4}%)`;
                     } else if (colorType < 8) {
-                        starColor = `hsl(210, ${60 + Math.random() * 40}%, ${85 + star.hue / 3}%)`;
+                        starColor = `hsl(210, ${60 + Math.random() * 40}%, ${75 + star.hue / 3}%)`;
                     } else {
-                        starColor = `hsl(${30 + Math.random() * 30}, ${70 + Math.random() * 30}%, ${80 + star.hue / 3}%)`;
+                        starColor = `hsl(${30 + Math.random() * 30}, ${70 + Math.random() * 30}%, ${70 + star.hue / 3}%)`;
                     }
                 } else {
-                    starColor = color;
+                    // Koyu mod için daha parlak renkler
+                    const brightness = 70 + Math.random() * 30;
+                    const saturation = 60 + Math.random() * 40;
+                    starColor = `hsl(${color === '#000' || color === 'black' ? 220 : 0}, ${saturation}%, ${brightness}%)`;
                 }
 
 

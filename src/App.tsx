@@ -5,7 +5,6 @@ import Pricing from "./components/base/Pricing";
 import Newsletter from "./components/base/Newsletter";
 import FAQSection from "./components/base/FAQSection";
 import DownloadSection from "./components/base/DownloadSection";
-import OurTeam from "./components/base/OurTeam";
 
 const App = () => {
   return (
@@ -18,7 +17,6 @@ const App = () => {
         <Pricing />
         <Newsletter />
         <FAQSection />
-        <OurTeam />
       </div>
     </div>
   );
