@@ -86,15 +86,64 @@
 
   @keyframes flicker {
     0% {
-      opacity: 1;
+      opacity: 0.2;
     }
-
+    25% {
+      opacity: 0.8;
+    }
     50% {
       opacity: 0.4;
     }
-
+    75% {
+      opacity: 0.9;
+    }
     100% {
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    50% {
+      transform: scale(1.2);
       opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes twinkle {
+    0% {
+      opacity: 0.2;
+      filter: blur(1px);
+    }
+    50% {
+      opacity: 1;
+      filter: blur(0.5px);
+    }
+    100% {
+      opacity: 0.2;
+      filter: blur(1px);
+    }
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    33% {
+      transform: translateY(3px) translateX(2px);
+    }
+    66% {
+      transform: translateY(-2px) translateX(4px);
+    }
+    100% {
+      transform: translateY(0) translateX(0);
     }
   }
 
@@ -200,4 +249,22 @@
     transition: 1s;
     transition-delay: 0.75s;
   }
+}
+
+.star {
+  pointer-events: none;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.star.small {
+  opacity: 0.6;
+}
+
+.star.medium {
+  opacity: 0.8;
+}
+
+.star.large {
+  opacity: 1;
 }
