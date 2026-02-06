@@ -10,12 +10,42 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import { ModeToggle } from "./ThemeToggle";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 const Header = () => {
     const isDesktop = useMediaQuery("(min-width: 768px)");
     const [scrolled, setScrolled] = useState(false);
+    const navigate = useNavigate();
+    const router = useRouter();
+
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const offset = 80; // Header height
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    };
+
+    const handleLinkClick = (id: string) => {
+        const currentPath = router.state.location.pathname;
+        if (currentPath !== '/') {
+            navigate({ to: '/' }).then(() => {
+                // Wait for the page to load
+                setTimeout(() => scrollToSection(id), 100);
+            });
+        } else {
+            scrollToSection(id);
+        }
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,23 +63,36 @@ const Header = () => {
 
     const renderLinks = () => (
         <>
-            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
+            <Button
+                className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0"
+                variant="link"
+                onClick={() => handleLinkClick('home')}
+            >
                 <div>Home</div>
             </Button>
-            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
+            <Button
+                className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0"
+                variant="link"
+                onClick={() => handleLinkClick('features')}
+            >
                 <div>Features</div>
             </Button>
-            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
+            <Button
+                className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0"
+                variant="link"
+                onClick={() => handleLinkClick('pricing')}
+            >
                 <div>Pricing</div>
             </Button>
             <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
                 <Link to="/contact">Contact</Link>
             </Button>
-            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
+            <Button
+                className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0"
+                variant="link"
+                onClick={() => handleLinkClick('faq')}
+            >
                 <div>FAQ</div>
-            </Button>
-            <Button className="text-base font-medium hover:text-primary transition-colors dark:text-[#ECECEC] p-0" variant="link">
-                <div>Team</div>
             </Button>
         </>
     );

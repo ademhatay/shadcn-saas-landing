@@ -24,7 +24,7 @@ export const createStars = (count: number, color: string): Star[] => {
     const vh = Math.random() * 100 - 50; 
     const size = Math.random() * 3; 
     
-    // Size sınıfını belirle
+    // Determine size class
     let type: 'small' | 'medium' | 'large';
     if (size < 1) {
       type = 'small';
@@ -34,15 +34,15 @@ export const createStars = (count: number, color: string): Star[] => {
       type = 'large';
     }
     
-    // Boyuta göre blur değerini belirle
+    // Determine blur value according to size
     const blur = type === 'small' ? Math.random() + 1 : 
                 type === 'medium' ? Math.random() * 2 + 1.5 :
                 Math.random() * 3 + 2;
     
-    // Rastgele animasyon seç
+    // Select random animation
     const animationType = animationTypes[Math.floor(Math.random() * animationTypes.length)];
     
-    // Animasyon süresini belirle - küçük yıldızlar daha hızlı yanıp söner
+    // Determine animation duration - small stars blink faster
     let duration;
     if (type === 'small') {
       duration = Math.random() * 2 + 2; // 2-4s
