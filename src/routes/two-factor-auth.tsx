@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-// NOT: Burada gerçek bileşeni import edilecek
+// NOTE: The real component will be imported here
 export const Route = createFileRoute('/two-factor-auth')({
-  component: () => <div>İki faktörlü kimlik doğrulama sayfası - Yapım aşamasında</div>,
-}) 
+  component: () => <div>Two-factor authentication page - Under construction</div>,
+})

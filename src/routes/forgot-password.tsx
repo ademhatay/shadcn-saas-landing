@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-// NOT: Burada gerçek bileşeni import edilecek
+// NOTE: The real component will be imported here
 export const Route = createFileRoute('/forgot-password')({
-  component: () => <div>Şifre sıfırlama sayfası - Yapım aşamasında</div>,
-}) 
+  component: () => <div>Password reset page - Under construction</div>,
+})

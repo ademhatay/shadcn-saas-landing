@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-// NOT: Burada gerçek bileşeni import edilecek
+// NOTE: The real component will be imported here
 export const Route = createFileRoute('/register')({
-  component: () => <div>Register sayfası - Yapım aşamasında</div>,
-}) 
+  component: () => <div>Register page - Under construction</div>,
+})

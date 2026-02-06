@@ -64,7 +64,7 @@ const Stars: React.FC<StarsProps> = ({ color }) => {
             const deltaTime = time - lastTime;
             lastTime = time;
 
-            // Yumuşak mouse hareketi
+            // Smooth mouse movement
             mouseMoveX += (targetMouseX - mouseMoveX) * 0.05;
             mouseMoveY += (targetMouseY - mouseMoveY) * 0.05;
 
@@ -80,7 +80,7 @@ const Stars: React.FC<StarsProps> = ({ color }) => {
                 star.z -= deltaTime * 0.05;
 
 
-                // Derinliğe göre hareket hızını ayarla
+                // Adjust movement speed according to depth
                 const depth = (1000 - star.z) / 1000;
                 star.x += mouseMoveX * depth * 15;
                 star.y += mouseMoveY * depth * 15;
@@ -118,7 +118,7 @@ const Stars: React.FC<StarsProps> = ({ color }) => {
                         starColor = `hsl(${30 + Math.random() * 30}, ${70 + Math.random() * 30}%, ${70 + star.hue / 3}%)`;
                     }
                 } else {
-                    // Koyu mod için daha parlak renkler
+                    // Brighter colors for dark mode
                     const brightness = 70 + Math.random() * 30;
                     const saturation = 60 + Math.random() * 40;
                     starColor = `hsl(${color === '#000' || color === 'black' ? 220 : 0}, ${saturation}%, ${brightness}%)`;
